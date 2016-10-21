@@ -1,0 +1,9 @@
+#transcoder textarea {
+    width: 100%;
+    margin-bottom: 1em;
+    font-family: monospace;
+}
+
+#transcoder button {
+    margin-right: 1em;
+}

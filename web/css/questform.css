@@ -1,0 +1,14 @@
+#questform input,
+#questform textarea,
+#questform label {
+    display: block;
+    width: 100%;
+    margin-bottom: 1em;
+    clear: both;
+}
+
+#questform label input {
+    float: right;
+    width: initial;
+    display: initial;
+}
