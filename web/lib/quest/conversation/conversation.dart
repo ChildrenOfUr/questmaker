@@ -36,9 +36,9 @@ class Conversation implements QuestData, QuestDisplay {
 		});
 	}
 
-	Element toElement([String title = 'Conversation']) => new FieldSetElement()
+	Element toElement([String title]) => new FieldSetElement()
 		..append(new LegendElement()
-			..text = title)
+			..text = 'Conversation' + (title != null ? ': $title' : ''))
 		..append(new TextInputElement()
 			..name = 'id'
 			..placeholder = 'ID'
