@@ -13,6 +13,30 @@
     display: initial;
 }
 
-.editlist span {
+#questform .editlist span {
     margin-left: 1em;
+}
+
+#questform fieldset.prerequisites,
+#questform fieldset.requirements,
+#questform fieldset.rewards,
+#questform fieldset.convo {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#questform fieldset.prerequisites {
+    width: calc(25% - 30px);
+}
+
+#questform fieldset.requirements {
+    width: calc(50% - 30px);
+}
+
+#questform fieldset.rewards {
+    width: calc(25% - 30px);
+}
+
+#questform fieldset.convo {
+    width: calc(50% - 30px);
 }

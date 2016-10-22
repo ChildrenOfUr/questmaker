@@ -58,7 +58,7 @@ class Quest implements QuestData {
 			requirements.add(new Requirement.fromElement(requirement));
 		});
 
-		element.querySelectorAll('.prerequisites input').forEach((Element prereq) {
+		element.querySelectorAll('.prerequisites .shorttext').forEach((Element prereq) {
 			prerequisites.add(new ShortText.fromElement(prereq).string);
 		});
 
@@ -101,22 +101,24 @@ class Quest implements QuestData {
 				..value = description)
 
 			..append(new FieldSetElement()
-				..append(new LegendElement()
-					..text = 'Requirements')
-				..append(editRequirements.list
-					..classes = ['requirements']))
-
-			..append(new FieldSetElement()
+				..classes = ['prerequisites']
 				..append(new LegendElement()
 					..text = 'Prerequisites')
-				..append(editPrereqs.list
-					..classes = ['prerequisites']))
+				..append(editPrereqs.list))
+
+			..append(new FieldSetElement()
+				..classes = ['requirements']
+				..append(new LegendElement()
+					..text = 'Requirements')
+				..append(editRequirements.list))
 
 			..append(rewards.toElement())
 
 			..append(convoStart.toElement('Offer')
+				..classes.add('convo')
 				..classes.add('convo-start'))
 			..append(convoEnd.toElement('Complete')
+				..classes.add('convo')
 				..classes.add('convo-end'));
 	}
 }
