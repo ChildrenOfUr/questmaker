@@ -2,6 +2,7 @@ part of coUquestmaker;
 
 class Transcoder {
 	static FieldSetElement transcoderDisplay = querySelector('#transcoder');
+	static FieldSetElement questDisplay = querySelector('#questform');
 
 	static final JsonEncoder ENCODER = new JsonEncoder.withIndent('\t');
 

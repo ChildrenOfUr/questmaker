@@ -53,15 +53,15 @@ class Screen implements QuestData, QuestDisplay {
 			..append(new FieldSetElement()
 				..append(new LegendElement()
 					..text = 'Paragraphs')
-					..append(new EditList(items: paragraphEditors, template: new LongText(), inflate: (Element element) {
-						return new LongText.fromElement(element);
-					}).list..classes.add('paragraphs')))
+				..append(new EditList(items: paragraphEditors, template: new LongText(), inflate: (Element element) {
+					return new LongText.fromElement(element);
+				}).list..classes.add('paragraphs')))
 
 			..append(new FieldSetElement()
 				..append(new LegendElement()
-					..text = 'Choices'
-					..append(new EditList(items: choices, template: new Choice(), inflate: (Element element) {
-						return new Choice.fromElement(element);
-					}).list..classes.add('choices'))));
+					..text = 'Choices')
+				..append(new EditList(items: choices, template: new Choice(), inflate: (Element element) {
+					return new Choice.fromElement(element);
+				}).list..classes.add('choices')));
 	}
 }
