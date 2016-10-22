@@ -1,7 +1,7 @@
 part of coUquestmaker;
 
 class Transcoder {
-	static FieldSetElement display = querySelector('#transcoder');
+	static FieldSetElement transcoderDisplay = querySelector('#transcoder');
 
 	static final JsonEncoder ENCODER = new JsonEncoder.withIndent('\t');
 
@@ -10,7 +10,7 @@ class Transcoder {
 	ButtonElement encodeBtn;
 
 	Transcoder() {
-		display
+		transcoderDisplay
 			..children.clear()
 			..append(new LegendElement()..text = 'Transcode JSON');
 
@@ -24,27 +24,59 @@ class Transcoder {
 			..text = '\u25B2 Encode'
 			..onClick.listen((_) => encode());
 
-		display
+		transcoderDisplay
 			..append(displayText)
 			..append(decodeBtn)
 			..append(encodeBtn);
 	}
 
-	void decode() {
+	void decode([Map<String, dynamic> presetQuest]) {
+		Map<String, dynamic> quest;
+
+		if (presetQuest != null) {
+			quest = presetQuest;
+		} else {
+			try {
+				quest = JSON.decode(displayText.value);
+			} catch (e,st) {
+				window.alert('Could not decode JSON!\n\n$e\n$st');
+			}
+		}
+
 		try {
-			Map<String, dynamic> quest = JSON.decode(displayText.value);
-			workingQuest = new Quest.parse(quest);
-			questUi = new QuestForm(workingQuest);
-		} catch (e) {
-			window.alert('Could not decode JSON!\n\n$e');
+			workingQuest = new Quest.fromMap(quest);
+		} catch (e, st) {
+			window.alert('Could not inflate quest!\n\n$e\n$st');
+		}
+
+		try {
+			Element newQuestDisplay = workingQuest.toElement();
+			questDisplay.replaceWith(newQuestDisplay);
+			questDisplay = newQuestDisplay;
+		} catch (e, st) {
+			window.alert('Could not display quest!\n\n$e\n$st');
 		}
 	}
 
 	void encode() {
 		try {
-			displayText.value = ENCODER.convert(workingQuest.toMap());
-		} catch (e) {
-			window.alert('Could not encode JSON!\n\n$e');
+			workingQuest = new Quest.fromElement(questDisplay);
+		} catch (e, st) {
+			window.alert('Could not input quest!\n\n$e\n$st');
+		}
+
+		Map<String, dynamic> questMap;
+
+		try {
+			questMap = workingQuest.toMap();
+		} catch (e, st) {
+			window.alert('Could not deflate quest!\n\n$e\n$st');
+		}
+
+		try {
+			displayText.value = ENCODER.convert(questMap);
+		} catch (e, st) {
+			window.alert('Could not encode JSON!\n\n$e\n$st');
 		}
 	}
 }

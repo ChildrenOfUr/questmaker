@@ -10,7 +10,7 @@ part 'lib/conversation/choice.dart';
 part 'lib/conversation/conversation.dart';
 part 'lib/conversation/screen.dart';
 
-part 'lib/display/form.dart';
+part 'lib/display/editlist.dart';
 part 'lib/display/transcoder.dart';
 
 part 'lib/quest/quest.dart';
@@ -19,11 +19,11 @@ part 'lib/quest/rewards.dart';
 
 final Random RAND = new Random();
 
+FieldSetElement questDisplay = querySelector('#questform');
 Transcoder transcoder;
-QuestForm questUi;
 Quest workingQuest = new Quest();
 
 void main() {
 	transcoder = new Transcoder();
-	questUi = new QuestForm();
+	transcoder.decode(workingQuest.toMap());
 }

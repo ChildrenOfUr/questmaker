@@ -1,17 +1,17 @@
 part of coUquestmaker;
 
-class Conversation implements QuestData {
+class Conversation implements QuestData, QuestDisplay {
 	String id = '';
 	List<Screen> screens = [];
 
 	Conversation();
 
-	Conversation.parse(Map<String, dynamic> conversation) {
+	Conversation.fromMap(Map<String, dynamic> conversation) {
 		id = conversation['id'];
 
 		screens = [];
 		for (Map<String, dynamic> screen in conversation['screens']) {
-			screens.add(new Screen.parse(screen));
+			screens.add(new Screen.fromMap(screen));
 		}
 	}
 
@@ -27,4 +27,23 @@ class Conversation implements QuestData {
 
 		return encoded;
 	}
+
+	Conversation.fromElement(Element element) {
+		id = (element.querySelector('[name="id"]') as TextInputElement).value;
+
+		element.querySelectorAll('.screen').forEach((Element element) {
+			screens.add(new Screen.fromElement(element));
+		});
+	}
+
+	Element toElement([String title = 'Conversation']) => new FieldSetElement()
+		..append(new LegendElement()
+			..text = title)
+		..append(new TextInputElement()
+			..name = 'id'
+			..placeholder = 'ID'
+			..value = id)
+		..append(new EditList(items: screens, template: new Screen(), inflate: (Element element) {
+			return new Screen.fromElement(element);
+		}).list..classes.add('screens'));
 }

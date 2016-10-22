@@ -12,3 +12,7 @@
     width: initial;
     display: initial;
 }
+
+.editlist span {
+    margin-left: 1em;
+}
