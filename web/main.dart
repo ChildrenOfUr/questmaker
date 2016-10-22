@@ -1,5 +1,6 @@
 library coUquestmaker;
 
+import 'dart:async';
 import 'dart:convert';
 import 'dart:html';
 import 'dart:math';
@@ -18,9 +19,12 @@ final Random RAND = new Random();
 Quest workingQuest;
 Transcoder transcoder;
 
-void main() {
+Future main() async {
 	// Set up encode/decode JSON
 	transcoder = new Transcoder();
+
+	// Get requirement info from server
+	await Requirement.loadTypes();
 
 	// Create a new empty quest and display it
 	workingQuest = new Quest();

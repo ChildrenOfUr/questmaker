@@ -7,7 +7,8 @@
     clear: both;
 }
 
-#questform label input {
+#questform label input,
+#questform label select {
     float: right;
     width: initial;
     display: initial;
