@@ -72,13 +72,13 @@ class Quest implements QuestData {
 		for (String prereq in prerequisites) {
 			prereqEditors.add(new ShortText(prereq));
 		}
-		EditList<ShortText> editPrereqs = new EditList(items: prereqEditors, template: new ShortText(), inflate: (Element element) {
-			return new ShortText.fromElement(element);
-		});
+		EditList<ShortText> editPrereqs = new EditList(prereqEditors,
+			(Element element) => new ShortText.fromElement(element),
+			() => new ShortText());
 
-		EditList<Requirement> editRequirements = new EditList(items: requirements, template: new Requirement(), inflate: (Element element) {
-			return new Requirement.fromElement(element);
-		});
+		EditList<Requirement> editRequirements = new EditList(requirements,
+			(Element element) => new Requirement.fromElement(element),
+			() => new Requirement());
 
 		return new FieldSetElement()
 			..id = 'questform'

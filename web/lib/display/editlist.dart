@@ -3,10 +3,10 @@ part of coUquestmaker;
 class EditList<T extends QuestDisplay> {
 	OListElement list;
 	List<T> items;
-	T template;
 	Function inflate;
+	Function template;
 
-	EditList({this.items, this.template, this.inflate(Element element)}) {
+	EditList(this.items, this.inflate(Element element), [this.template()]) {
 		list = new OListElement()
 			..classes = ['editlist'];
 
@@ -78,7 +78,7 @@ class EditList<T extends QuestDisplay> {
 	void addItem([T item]) {
 		readValues();
 
-		items.add(item ?? template);
+		items.add(item ?? template());
 
 		update();
 	}

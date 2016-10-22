@@ -8,7 +8,9 @@ class Requirement implements QuestData, QuestDisplay {
 	int numRequired = 0;
 	String eventType = '';
 
-	Requirement();
+	Requirement() {
+		id = workingQuest.id + '_R${RAND.nextInt(999)}';
+	}
 
 	Requirement.fromMap(Map<String, dynamic> requirement) {
 		id = requirement['id'];

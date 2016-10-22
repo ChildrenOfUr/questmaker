@@ -45,6 +45,14 @@ class Screen implements QuestData, QuestDisplay {
 			paragraphEditors.add(new LongText(string));
 		}
 
+		EditList paragraphEditList = new EditList(paragraphEditors,
+			(Element element) => new LongText.fromElement(element),
+			() => new LongText());
+
+		EditList choicesEditList = new EditList(choices,
+			(Element element) => new Choice.fromElement(element),
+			() => new Choice());
+
 		return new FieldSetElement()
 			..classes = ['screen']
 			..append(new LegendElement()
@@ -53,15 +61,13 @@ class Screen implements QuestData, QuestDisplay {
 			..append(new FieldSetElement()
 				..append(new LegendElement()
 					..text = 'Paragraphs')
-				..append(new EditList(items: paragraphEditors, template: new LongText(), inflate: (Element element) {
-					return new LongText.fromElement(element);
-				}).list..classes.add('paragraphs')))
+				..append(paragraphEditList.list
+					..classes.add('paragraphs')))
 
 			..append(new FieldSetElement()
 				..append(new LegendElement()
 					..text = 'Choices')
-				..append(new EditList(items: choices, template: new Choice(), inflate: (Element element) {
-					return new Choice.fromElement(element);
-				}).list..classes.add('choices')));
+				..append(choicesEditList.list
+					..classes.add('choices')));
 	}
 }

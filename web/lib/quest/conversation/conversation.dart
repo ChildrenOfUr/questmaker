@@ -43,7 +43,7 @@ class Conversation implements QuestData, QuestDisplay {
 			..name = 'id'
 			..placeholder = 'ID'
 			..value = id)
-		..append(new EditList(items: screens, template: new Screen(), inflate: (Element element) {
-			return new Screen.fromElement(element);
-		}).list..classes.add('screens'));
+		..append(new EditList(screens,
+			(Element element) => new Screen.fromElement(element),
+			() => new Screen()).list..classes.add('screens'));
 }
