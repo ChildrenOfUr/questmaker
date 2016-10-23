@@ -31,19 +31,24 @@ class Conversation implements QuestData, QuestDisplay {
 	Conversation.fromElement(Element element) {
 		id = (element.querySelector('[name="id"]') as TextInputElement).value;
 
-		element.querySelectorAll('.screen').forEach((Element element) {
+		element.querySelectorAll('.screens .screen').forEach((Element element) {
 			screens.add(new Screen.fromElement(element));
 		});
 	}
 
-	Element toElement([String title]) => new FieldSetElement()
-		..append(new LegendElement()
-			..text = 'Conversation' + (title != null ? ': $title' : ''))
-		..append(new TextInputElement()
-			..name = 'id'
-			..placeholder = 'ID'
-			..value = id)
-		..append(new EditList(screens,
+	Element toElement([String title]) {
+		EditList<Screen> screenEditList = new EditList(screens,
 			(Element element) => new Screen.fromElement(element),
-			() => new Screen()).list..classes.add('screens'));
+			() => new Screen());
+
+		return new FieldSetElement()
+			..append(new LegendElement()
+				..text = 'Conversation' + (title != null ? ': $title' : ''))
+			..append(new TextInputElement()
+				..name = 'id'
+				..placeholder = 'ID'
+				..value = id)
+			..append(screenEditList.list
+				..classes.add('screens'));
+	}
 }

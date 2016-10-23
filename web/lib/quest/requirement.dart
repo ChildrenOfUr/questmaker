@@ -9,14 +9,14 @@ class Requirement implements QuestData, QuestDisplay {
 
 			DataListElement reqTypeList = new DataListElement()
 				..id = 'reqtypes';
-			(map['types'] as List<String>).forEach((String type) {
+			(map['types']).forEach((String type) {
 				reqTypeList.append(new OptionElement(value: type, data: type));
 			});
 			document.body.append(reqTypeList);
 
 			DataListElement eventTypeList = new DataListElement()
 				..id = 'eventtypes';
-			(map['events'] as List<String>).forEach((String event) {
+			(map['events']).forEach((String event) {
 				eventTypeList.append(new OptionElement(value: event, data: event));
 			});
 			document.body.append(eventTypeList);

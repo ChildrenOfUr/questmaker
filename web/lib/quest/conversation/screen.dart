@@ -45,11 +45,11 @@ class Screen implements QuestData, QuestDisplay {
 			paragraphEditors.add(new LongText(string));
 		}
 
-		EditList paragraphEditList = new EditList(paragraphEditors,
+		EditList<LongText> paragraphEditList = new EditList(paragraphEditors,
 			(Element element) => new LongText.fromElement(element),
 			() => new LongText());
 
-		EditList choicesEditList = new EditList(choices,
+		EditList<Choice> choicesEditList = new EditList(choices,
 			(Element element) => new Choice.fromElement(element),
 			() => new Choice());
 

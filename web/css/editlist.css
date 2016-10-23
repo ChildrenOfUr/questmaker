@@ -1,0 +1,25 @@
+.editlist button.down,
+.editlist button.up,
+.editlist button.remove {
+    width: 2em;
+}
+
+.editlist button.down {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right-width: 0;
+}
+
+.editlist button.up {
+    border-radius: 0;
+}
+
+.editlist button.remove {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left-width: 0;
+}
+
+.editlist button.add {
+
+}

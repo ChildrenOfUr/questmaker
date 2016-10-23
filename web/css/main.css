@@ -7,9 +7,48 @@ textarea {
 }
 
 fieldset {
+    margin-top: 0.5em;
     margin-bottom: 1em;
+}
+
+fieldset {
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+fieldset legend {
+    background-color: teal;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
 }
 
 textarea {
     resize: vertical;
+}
+
+button,
+input,
+textarea {
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4b2e4c;
+    color: #fff;
+}
+
+button[disabled] {
+    opacity: 0.5;
+}
+
+button:not([disabled]):hover {
+    background-color: #aaa;
+}
+
+button:not([disabled]):active {
+    background-color: #eee;
 }

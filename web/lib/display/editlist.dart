@@ -23,7 +23,8 @@ class EditList<T extends QuestDisplay> {
 
 		if (template != null) {
 			ButtonElement add = new ButtonElement()
-				..text = '+'
+				..classes = ['add']
+				..text = 'Create New'
 				..onClick.listen((_) => addItem());
 
 			list.append(new LIElement()
@@ -43,6 +44,7 @@ class EditList<T extends QuestDisplay> {
 		LIElement element = new LIElement();
 
 		ButtonElement moveDown = new ButtonElement()
+			..classes = ['down']
 			..text = '\u25BC'
 			..onClick.first.then((_) => swapItems(position, position + 1));
 
@@ -51,6 +53,7 @@ class EditList<T extends QuestDisplay> {
 		}
 
 		ButtonElement moveUp = new ButtonElement()
+			..classes = ['up']
 			..text = '\u25B2'
 			..onClick.first.then((_) => swapItems(position, position - 1));
 
@@ -59,6 +62,7 @@ class EditList<T extends QuestDisplay> {
 		}
 
 		ButtonElement remove = new ButtonElement()
+			..classes = ['remove']
 			..text = 'X'
 			..onClick.first.then((_) => removeItem(position));
 

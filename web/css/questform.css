@@ -1,3 +1,7 @@
+fieldset#questform {
+    background-color: #EDFFE4;
+}
+
 #questform input,
 #questform textarea,
 #questform label {
@@ -28,16 +32,32 @@
 
 #questform fieldset.prerequisites {
     width: calc(25% - 30px);
+    background-color: #CCD2FF;
 }
 
 #questform fieldset.requirements {
     width: calc(50% - 30px);
+    background-color: #FFC8C8;
+}
+
+#questform fieldset.requirement {
+    background-color: #FF9D9D;
 }
 
 #questform fieldset.rewards {
     width: calc(25% - 30px);
+    background-color: #D1FFEC;
 }
 
 #questform fieldset.convo {
     width: calc(50% - 30px);
+    background-color: #FFF6D4;
+}
+
+#questform fieldset.screen {
+    background-color: #EAEEFF;
+}
+
+#questform fieldset.choice {
+    background-color: #D2FAFF;
 }
