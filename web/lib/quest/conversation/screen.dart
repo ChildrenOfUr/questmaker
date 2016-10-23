@@ -1,7 +1,11 @@
 part of coUquestmaker;
 
+/// One page of a [Conversation] with the magic rock
 class Screen implements QuestData, QuestDisplay {
+	/// Text to display
 	List<String> paragraphs = [];
+
+	/// Buttons to click
 	List<Choice> choices = [];
 
 	Screen();

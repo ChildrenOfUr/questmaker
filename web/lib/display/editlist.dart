@@ -1,11 +1,25 @@
 part of coUquestmaker;
 
+/// Dynamic sortable lists of [QuestDisplay] items
 class EditList<T extends QuestDisplay> {
+	/// DOM list
 	OListElement list;
+
+	/// [QuestDisplay] object list
 	List<T> items;
+
+	/// [QuestDisplay.fromElement] constructor
 	Function inflate;
+
+	/// [QuestDisplay] default constructor
 	Function template;
 
+	/**
+	 * - [items] must be a list of objects that extend [QuestDisplay]
+	 * - [inflate] must be the [fromElement] constructor of the object
+	 * - [template] is optional (but the list will not be able to add new items without it),
+	 *   and should return a unique object when called
+	 */
 	EditList(this.items, this.inflate(Element element), [this.template()]) {
 		list = new OListElement()
 			..classes = ['editlist'];
@@ -13,6 +27,7 @@ class EditList<T extends QuestDisplay> {
 		update();
 	}
 
+	/// Update the DOM based on the current objects in [items]
 	void update() {
 		list.children.clear();
 
@@ -32,6 +47,7 @@ class EditList<T extends QuestDisplay> {
 		}
 	}
 
+	/// Store changes from the DOM back into [items]
 	void readValues() {
 		items.clear();
 
@@ -40,6 +56,7 @@ class EditList<T extends QuestDisplay> {
 		});
 	}
 
+	/// Create a DOM list item from a [QuestDisplay] object
 	LIElement makeListItem(T item, int position) {
 		LIElement element = new LIElement();
 
@@ -79,6 +96,7 @@ class EditList<T extends QuestDisplay> {
 		return element;
 	}
 
+	/// Add a [QuestDisplay] object to the list
 	void addItem([T item]) {
 		readValues();
 
@@ -87,6 +105,7 @@ class EditList<T extends QuestDisplay> {
 		update();
 	}
 
+	/// Remove an item from the list (by index)
 	void removeItem(int i) {
 		readValues();
 
@@ -95,6 +114,7 @@ class EditList<T extends QuestDisplay> {
 		update();
 	}
 
+	/// Switch two items in the list (by indices)
 	void swapItems(int i1, int i2) {
 		readValues();
 

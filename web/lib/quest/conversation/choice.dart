@@ -1,8 +1,14 @@
 part of coUquestmaker;
 
+/// Button displayed in the rock window during a [Quest] [Conversation]
 class Choice implements QuestData, QuestDisplay {
+	/// Button text
 	String text = '';
+
+	/// Go to a certain [Conversation] [Screen]
 	int gotoScreen = 0;
+
+	/// If this is true, clicking the button will accept the quest
 	bool isQuestAccept = false;
 
 	Choice();

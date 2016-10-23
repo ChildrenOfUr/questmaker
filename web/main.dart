@@ -15,10 +15,16 @@ part 'lib/quest/conversation/choice.dart';
 part 'lib/quest/conversation/conversation.dart';
 part 'lib/quest/conversation/screen.dart';
 
+/// Random number generator for preset IDs
 final Random RAND = new Random();
+
+/// Quest that is currently displayed
 Quest workingQuest;
+
+/// Interactive JSON controls
 Transcoder transcoder;
 
+/// Start the editor with a new [Quest], but support loading existing data
 Future main() async {
 	// Set up encode/decode JSON
 	transcoder = new Transcoder();

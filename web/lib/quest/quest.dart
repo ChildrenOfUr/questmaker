@@ -1,13 +1,30 @@
 part of coUquestmaker;
 
+/// Represents the top of the entire Quest component tree.
+/// The server can read the JSON that results from encoding this.
 class Quest implements QuestData {
+	/// Unique quest ID
 	String id;
+
+	/// Visible quest title/name (should be unique, but not required)
 	String title = '';
+
+	/// Visible long description of the quest
 	String description = '';
+
+	/// Everything that the player must do to complete the quest
 	List<Requirement> requirements = [];
+
+	/// List of quest [id]s that must be completed before offer
 	List<String> prerequisites = [];
+
+	/// Set of metabolics awarded to the player after completion
 	Rewards rewards = new Rewards();
+
+	/// [Conversation] from the magic rock when the quest is offered
 	Conversation convoStart = new Conversation();
+
+	/// [Conversation] from the magic rock when the quest is completed
 	Conversation convoEnd = new Conversation();
 
 	Quest() {

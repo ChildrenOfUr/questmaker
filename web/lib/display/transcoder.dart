@@ -1,15 +1,26 @@
 part of coUquestmaker;
 
+/// Handles JSON encoding and decoding
 class Transcoder {
+	/// Location of the JSON form on the page
 	static FieldSetElement transcoderDisplay = querySelector('#transcoder');
+
+	/// Location of the quest form on the page
 	static FieldSetElement questDisplay = querySelector('#questform');
 
+	/// Prettyprint JSON
 	static final JsonEncoder ENCODER = new JsonEncoder.withIndent('\t');
 
+	/// JSON input/output field
 	TextAreaElement displayText;
+
+	/// Click to convert JSON to objects
 	ButtonElement decodeBtn;
+
+	/// Click to convert objects to JSON
 	ButtonElement encodeBtn;
 
+	/// Create a new transcoder (we should only ever need one)
 	Transcoder() {
 		transcoderDisplay
 			..children.clear()
@@ -31,6 +42,7 @@ class Transcoder {
 			..append(encodeBtn);
 	}
 
+	/// Convert either the current JSON input or a [Map]-encoded quest to a [Quest] object
 	void decode([Map<String, dynamic> presetQuest]) {
 		Map<String, dynamic> quest;
 
@@ -59,6 +71,7 @@ class Transcoder {
 		}
 	}
 
+	/// Convert the current quest to JSON and display it
 	void encode() {
 		try {
 			workingQuest = new Quest.fromElement(questDisplay);

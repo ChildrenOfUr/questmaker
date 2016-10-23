@@ -1,10 +1,13 @@
 part of coUquestmaker;
 
+/// Set of messages and [Choice]s from the magic rock
 class Conversation implements QuestData, QuestDisplay {
 	String id = '';
 	List<Screen> screens = [];
 
-	Conversation();
+	Conversation() {
+		id = 'C' + RAND.nextInt(999999).toString();
+	}
 
 	Conversation.fromMap(Map<String, dynamic> conversation) {
 		id = conversation['id'];

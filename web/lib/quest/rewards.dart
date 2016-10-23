@@ -1,9 +1,17 @@
 part of coUquestmaker;
 
+/// Set of metabolics that are awarded to the player upon [Quest] completion
 class Rewards implements QuestData, QuestDisplay {
+	/// Energy awarded
 	int energy = 0;
+
+	/// Mood awarded
 	int mood = 0;
+
+	/// iMG awarded
 	int img = 0;
+
+	/// Currants awarded
 	int currants = 0;
 
 	Rewards();

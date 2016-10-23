@@ -1,6 +1,8 @@
 part of coUquestmaker;
 
+/// Player action or property that can complete the [Quest]
 class Requirement implements QuestData, QuestDisplay {
+	/// Download all of the currently supported action types and event types from the server
 	static Future<bool> loadTypes() async {
 		final String SERVER_URL = 'http://robertmcdermot.com:8181/quests/requirementTypes';
 		try {
@@ -28,11 +30,22 @@ class Requirement implements QuestData, QuestDisplay {
 		}
 	}
 
+	/// Unique ID of the requirement
 	String id = '';
+
+	/// Visible explanation of the requirement
 	String text = '';
+
+	/// Displayed icon URL of the requirement
 	String iconUrl = '';
+
+	/// Requirement type (generic)
 	String type = '';
+
+	/// How many times it must be completed
 	int numRequired = 0;
+
+	/// Trigger action (specific)
 	String eventType = '';
 
 	Requirement() {
